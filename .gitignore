@@ -1,0 +1,13 @@
+@"
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vscode/
+.idea/
+"@ | Set-Content -Path ".gitignore" -Encoding UTF8
