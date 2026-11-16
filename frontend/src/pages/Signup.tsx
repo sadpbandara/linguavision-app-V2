@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { BrainCircuit, Loader2 } from 'lucide-react';
@@ -6,7 +6,7 @@ import api from '../services/api';
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 

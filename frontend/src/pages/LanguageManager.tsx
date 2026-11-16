@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Globe, Plus, Loader2, ArrowLeft, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ const LanguageManager = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [fetchLoading, setFetchLoading] = useState(true);
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
 const fetchLanguages = async () => {
     try {

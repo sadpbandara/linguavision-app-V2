@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Brain, Clock, CheckCircle2, AlertCircle, ChevronRight, ChevronLeft, Play, X, Volume2 } from 'lucide-react';
+import { Brain, Clock, CheckCircle2, ChevronRight, ChevronLeft, Volume2 } from 'lucide-react';
 import api from '../services/api';
 
 const JftExam = () => {
