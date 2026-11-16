@@ -3,7 +3,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from datetime import timedelta
 import dj_database_url
-
 # Load .env variables
 load_dotenv()
 
@@ -47,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -69,19 +69,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# # Database Setup for PostgreSQL
+# # # Database Setup for PostgreSQL
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': os.getenv('DB_NAME'),
+#          'USER': os.getenv('DB_USER'),
+#          'PASSWORD':  os.getenv('DB_PASSWORD'),
+#          'HOST': os.getenv('DB_HOST'),
+#          'PORT': os.getenv('DB_PORT'),
+#      }
+#  }
+
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql',
-         'NAME': os.getenv('DB_NAME'),
-         'USER': os.getenv('DB_USER'),
-         'PASSWORD':  os.getenv('DB_PASSWORD'),
-         'HOST': os.getenv('DB_HOST'),
-         'PORT': os.getenv('DB_PORT'),
-     }
- }
-
-
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5432/linguavision'),
+        conn_max_age=600
+    )
+}
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.User'
@@ -119,3 +124,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CORS_ALLOW_ALL_ORIGINS = True  # Netlify frontend එකට සම්බන්ධ වීමට
