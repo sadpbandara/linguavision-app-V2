@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   BrainCircuit, Plus, Upload, Trash2, CheckCircle2, AlertTriangle,
-  ArrowLeft, Image as ImageIcon, ShieldAlert, Sparkles, Loader2, X
+  ArrowLeft, Image as ImageIcon, Sparkles, Loader2, X
 } from 'lucide-react';
 import api from '../services/api';
 

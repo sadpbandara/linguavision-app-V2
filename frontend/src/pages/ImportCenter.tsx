@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { UploadCloud, Download, FileSpreadsheet, FileArchive, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import api from '../services/api';
@@ -10,7 +10,7 @@ const ImportCenter = () => {
   const [uploadStatus, setUploadStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const [languages, setLanguages] = useState<any[]>([]);
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   // භාෂා ලැයිස්තුව ලබා ගැනීම
   useEffect(() => {
